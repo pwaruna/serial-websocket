@@ -1,0 +1,23 @@
+{
+  "name": "serialserver",
+  "version": "0.0.5",
+  "author": "Tom Igoe",
+  "dependencies": {
+    "express": "*",
+    "serial": "^0.0.9",
+    "serialport": "^9.2.8",
+    "websocket": "^1.0.34",
+    "ws": "^7.5.7",
+    "wss": "^3.3.4"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "A simple serial-to-websocket server",
+  "main": "wsServer.js",
+  "license": "ISC"
+}
