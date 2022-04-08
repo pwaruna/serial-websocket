@@ -45,7 +45,8 @@ function showPortOpen() {
 function readSerialData(data) {
   //console.log(data);
   //connection.onopen = () => {
-    connection.send(data)
+    var r1 = "kandana,"+data;
+    connection.send(r1)
   //}
 
   connection.onerror = (error) => {
