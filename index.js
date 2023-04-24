@@ -22,6 +22,20 @@ const WebSocket = require('ws')
 const url = 'ws://192.168.41.251:8080'
 const connection = new WebSocket(url)
 
+connection.addEventListener("open", () => {
+    console.log("Connection established");
+    reconnectInterval = 1000; // reset the retry interval on successful connection
+  });
+
+connection.addEventListener("close", (event) => {
+    console.log("Connection closed");
+    setTimeout(() => {
+      console.log(`Reconnecting in ${reconnectInterval / 1000} seconds...`);
+      connect(); // attempt to reconnect
+      reconnectInterval *= 2; // exponentially increase the retry interval
+    }, reconnectInterval);
+  });
+
 var myPort = new SerialPort(portName, { baudRate:115000, parity:"none"});// open the port
 var Readline = SerialPort.parsers.Readline;	// make instance of Readline parser
 var parser = new Readline();			// make a new parser to read ASCII lines
